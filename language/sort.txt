@@ -1,0 +1,31 @@
+function quicksort(vector of int arr int n)
+    begin
+    short int i,j;
+    int sw, min set i;
+    do
+    begin
+        min set i;
+        j set (i add 1);
+        do
+        begin
+            if arr[j] first smaller arr[min] then
+                min set j;
+            else;
+            j set (j add 1);
+            end
+        while j first smaller n;
+        sw set arr[i];
+        arr[i] set arr[min];
+        arr[min] set sw;
+        i set (i add 1);
+        end
+    while i first smaller (n sub 1);
+    end
+return arr;
+
+function work()
+    begin
+    vector of int mas set {6, 3, 5, 1, 2, 1};
+    mas set quicksort(mas 6);
+    end
+return 0;

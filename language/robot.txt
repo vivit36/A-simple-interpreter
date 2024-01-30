@@ -1,0 +1,711 @@
+function equal(int a int b)
+begin
+    int res set -1;
+    if a first larger b then
+        res set -1;
+    else
+        if b first larger a then
+            res set -1;
+        else
+            res set 1;
+end
+return res;
+
+function ismoveenable()
+begin
+    int res set 0;
+    int tmp set 0;
+
+    int hor set 0;
+    int l set 0;
+    int r set 0;
+
+    hor set move;
+    tmp set equal(hor 0);
+    if tmp first smaller 0 then
+        tmp set move;
+    else;
+
+    l set left;
+    tmp set equal(l 0);
+    if tmp first smaller 0 then
+        tmp set right;
+    else;
+
+    r set right;
+    tmp set equal(r 0);
+    if tmp first smaller 0 then
+        tmp set left;
+    else;
+
+    int tmpone set 0;
+    int tmptwo set 0;
+    int tmpthree set 0;
+
+    tmpone set equal(hor 2);
+    tmptwo set equal(l 1);
+    tmpthree set equal(r -1);
+
+    if (tmpone first larger 0) or (tmptwo first larger 0) or (tmpthree first larger 0) then
+        res set 10;
+    else;
+
+    tmpone set equal(hor 0);
+    tmptwo set equal(l 0);
+    tmpthree set equal(r 0);
+
+    if (tmpone first smaller 0) and (tmptwo first smaller 0) and (tmpthree first smaller 0) then
+        res set 7;
+    else;
+
+    if (tmpone first larger 0) and (tmptwo first larger 0) and (tmpthree first smaller 0) then
+        res set 6;
+    else;
+
+    if (tmpone first larger 0) and (tmptwo first smaller 0) and (tmpthree first larger 0) then
+        res set 5;
+    else;
+
+    if (tmpone first smaller 0) and (tmptwo first larger 0) and (tmpthree first larger 0) then
+        res set 4;
+    else;
+
+    if (tmpone first larger 0) and (tmptwo first smaller 0) and (tmpthree first smaller 0) then
+        res set 3;
+    else;
+
+    if (tmpone first smaller 0) and (tmptwo first smaller 0) and (tmpthree first larger 0) then
+        res set 2;
+    else;
+
+    if (tmpone first smaller 0) and (tmptwo first larger 0) and (tmpthree first smaller 0) then
+        res set 1;
+    else;
+
+
+    if (tmpone first larger 0) and (tmptwo first larger 0) and (tmpthree first larger 0) then
+        res set 0;
+    else;
+end
+return res;
+
+function mod(int a)
+begin
+    int res;
+    int k;
+
+    do
+        begin
+            a set a sub 2;
+        end
+    while a first larger 2;
+
+    k set equal(a 2);
+    if k first larger 0 then
+        res set 0;
+    else
+        res set 1;
+
+end
+return res;
+
+function isdeadend(vector of vector of vector of int memory int frwall int i int j)
+begin
+    vector of int res set {0, 0};
+    int des;
+    des set ismoveenable();
+
+    int tmp;
+    int tmpw;
+    int tmps;
+    int xt;
+
+    tmp set equal(des 10);
+    if tmp first larger 0 then
+        begin
+            res[0] set 10;
+            res[1] set 10;
+        end
+    else;
+
+    tmp set equal(des 0);
+    if tmp first larger 0 then
+        begin
+            res[0] set -1;
+            res[1] set -1;
+        end
+    else;
+
+    tmp set equal(des 1);
+    if tmp first larger 0 then
+        begin
+            tmpw set equal(frwall 2);
+            if tmpw first larger 0 then
+                begin
+                    xt set memory[i][j][0];
+                    tmps set equal(xt 0);
+                    if tmps first larger 0 then
+                        begin
+                            res[0] set 0;
+                            res[1] set 0;
+                        end
+                    else
+                        begin
+                            res[0] set 2;
+                            res[1] set 1;
+                        end
+                end
+            else
+                begin
+                    xt set memory[i][j][2];
+                    tmps set equal(xt 0);
+                    if tmps first larger 0 then
+                        begin
+                            res[0] set 2;
+                            res[1] set 0;
+                        end
+                    else
+                        begin
+                            res[0] set 0;
+                            res[1] set 1;
+                        end
+                end
+        end
+    else;
+
+    tmp set equal(des 2);
+    if tmp first larger 0 then
+        begin
+            tmpw set equal(frwall 1);
+            if tmpw first larger 0 then
+                begin
+                    xt set memory[i][j][0];
+                    tmps set equal(xt 0);
+                    if tmps first larger 0 then
+                        begin
+                            res[0] set 0;
+                            res[1] set 0;
+                        end
+                    else
+                        begin
+                            res[0] set 1;
+                            res[1] set 1;
+                        end
+                end
+            else
+                begin
+                    xt set memory[i][j][1];
+                    tmps set equal(xt 0);
+                    if tmps first larger 0 then
+                        begin
+                            res[0] set 1;
+                            res[1] set 0;
+                        end
+                    else
+                        begin
+                            res[0] set 0;
+                            res[1] set 1;
+                        end
+                end
+        end
+    else;
+
+    tmp set equal(des 3);
+    if tmp first larger 0 then
+        begin
+            tmpw set equal(frwall 1);
+            if tmpw first larger 0 then
+                begin
+                    xt set memory[i][j][2];
+                    tmps set equal(xt 0);
+                    if tmps first larger 0 then
+                        begin
+                            res[0] set 2;
+                            res[1] set 0;
+                        end
+                    else
+                        begin
+                            res[0] set 1;
+                            res[1] set 1;
+                        end
+                end
+            else
+                begin
+                    xt set memory[i][j][1];
+                    tmps set equal(xt 0);
+                    if tmps first larger 0 then
+                        begin
+                            res[0] set 1;
+                            res[1] set 0;
+                        end
+                    else
+                        begin
+                            res[0] set 2;
+                            res[1] set 1;
+                        end
+                end
+        end
+    else;
+
+    tmp set equal(des 4);
+    if tmp first larger 0 then
+        begin
+            tmpw set equal(frwall -2);
+            if tmpw first smaller 0 then
+                begin
+                    res[0] set 0;
+                    res[1] set 1;
+                end
+            else
+                begin
+                    res[0] set 0;
+                    res[1] set 0;
+                end
+        end
+    else;
+
+    tmp set equal(des 5);
+    if tmp first larger 0 then
+        begin
+            tmpw set equal(frwall -2);
+            if tmpw first smaller 0 then
+                begin
+                    res[0] set 1;
+                    res[1] set 1;
+                end
+            else
+                begin
+                    res[0] set 1;
+                    res[1] set 0;
+                end
+        end
+    else;
+
+    tmp set equal(des 6);
+    if tmp first larger 0 then
+        begin
+            tmpw set equal(frwall -2);
+            if tmpw first smaller 0 then
+                begin
+                    res[0] set 2;
+                    res[1] set 1;
+                end
+            else
+                begin
+                    res[0] set 2;
+                    res[1] set 0;
+                end
+        end
+    else;
+
+
+    tmp set equal(des 7);
+    if tmp first larger 0 then
+        begin
+            tmpw set equal(frwall 0);
+            if tmpw first larger 0 then
+                begin
+                    xt set memory[i][j][1];
+                    tmps set equal(xt 0);
+                    if tmps first larger 0 then
+                        begin
+                            res[0] set 1;
+                            res[1] set 0;
+                        end
+                    else
+                        begin
+                            xt set memory[i][j][2];
+                            tmps set equal(xt 0);
+                            if tmps first larger 0 then
+                                begin
+                                    res[0] set 2;
+                                    res[1] set 0;
+                                end
+                            else
+                                begin
+                                    xt set memory[i][j][0];
+                                    tmps set equal(xt 2);
+                                    if tmps first smaller 0 then
+                                        begin
+                                            res[0] set 0;
+                                            res[1] set 1;
+                                        end
+                                    else
+                                        begin
+                                            res[0] set -1;
+                                            res[1] set -1;
+                                        end
+                                end
+                        end
+                end
+            else
+                begin
+                    tmpw set equal(frwall 1);
+                    if tmpw first larger 0 then
+                        begin
+                            xt set memory[i][j][0];
+                            tmps set equal(xt 0);
+                            if tmps first larger 0 then
+                                begin
+                                    res[0] set 0;
+                                    res[1] set 0;
+                                end
+                            else
+                                begin
+                                    xt set memory[i][j][2];
+                                    tmps set equal(xt 0);
+                                    if tmps first larger 0 then
+                                        begin
+                                            res[0] set 2;
+                                            res[1] set 0;
+                                        end
+                                    else
+                                        begin
+                                            xt set memory[i][j][1];
+                                            tmps set equal(xt 2);
+                                            if tmps first smaller 0 then
+                                                begin
+                                                    res[0] set 1;
+                                                    res[1] set 1;
+                                                end
+                                            else
+                                                begin
+                                                    res[0] set -1;
+                                                    res[1] set -1;
+                                                end
+                                        end
+                                end
+                        end
+                    else
+                        begin
+                            xt set memory[i][j][0];
+                            tmps set equal(xt 0);
+                            if tmps first larger 0 then
+                                begin
+                                    res[0] set 0;
+                                    res[1] set 0;
+                                end
+                            else
+                                begin
+                                    xt set memory[i][j][1];
+                                    tmps set equal(xt 0);
+                                    if tmps first larger 0 then
+                                        begin
+                                            res[0] set 1;
+                                            res[1] set 0;
+                                        end
+                                    else
+                                        begin
+                                            xt set memory[i][j][2];
+                                            tmps set equal(xt 2);
+                                            if tmps first smaller 0 then
+                                                begin
+                                                    res[0] set 2;
+                                                    res[1] set 1;
+                                                end
+                                            else
+                                                begin
+                                                    res[0] set -1;
+                                                    res[1] set -1;
+                                                end
+                                        end
+                                end
+                        end
+                end
+        end
+    else;
+end
+return res;
+
+function moveandmark(int i int j int dir vector of vector of vector of int memory)
+begin
+    int res set 0;
+    int tmp;
+    int tmps;
+    int tmpw;
+
+    tmps set equal(dir -1);
+    if tmps first larger 0 then
+        begin
+            memory[i][j][0] set memory[i][j][0] add 1;
+            tmpw set i add 1;
+            if tmpw first smaller 7 then
+                begin
+                    tmps set i add 1;
+                    memory[tmps][j][0] set memory[tmps][j][0] add 1;
+                end
+            else;
+            tmp set move;
+        end
+    else;
+
+    tmps set equal(dir 0);
+    if tmps first larger 0 then
+        begin
+            memory[i][j][0] set memory[i][j][0] add 1;
+            tmpw set i sub 1;
+            if tmpw first larger -1 then
+                begin
+                    tmps set i sub 1;
+                    memory[tmps][j][0] set memory[tmps][j][0] add 1;
+                end
+            else;
+            tmp set move;
+        end
+    else;
+
+    tmps set equal(dir 1);
+    if tmps first larger 0 then
+        begin
+            memory[i][j][1] set memory[i][j][1] add 1;
+            tmpw set j sub 1;
+            if tmpw first larger -1 then
+                begin
+                    tmps set j sub 1;
+                    memory[i][tmps][2] set memory[i][tmps][2] add 1;
+                end
+            else;
+            tmp set left;
+        end
+    else;
+
+    tmps set equal(dir 2);
+    if tmps first larger 0 then
+        begin
+            memory[i][j][2] set memory[i][j][2] add 1;
+            tmpw set j add 1;
+            if tmpw first smaller 19 then
+                begin
+                    tmps set j add 1;
+                    memory[i][tmps][1] set memory[i][tmps][1] add 1;
+                end
+            else;
+            tmp set right;
+        end
+    else;
+
+end
+return res;
+
+
+function step(int i int j int tail vector of vector of int curpath vector of vector of vector of int memory)
+begin
+    vector of int res[2];
+    int cf;
+    int tmp;
+    int tmps;
+    int tmpw;
+    int tmpf;
+    vector of int da[2];
+    int dir;
+    int ans;
+    vector of int prev[3];
+    int prwl;
+    int flag set 0;
+
+
+    tmp set equal(tail 0);
+    if tmp first larger 0 then
+        begin
+            da set isdeadend(memory -2 i j);
+            dir set da[0];
+            ans set da[1];
+
+            tmps set equal(dir 0);
+            if tmps first larger 0 then
+                begin
+                    tmpw set i add j;
+                    tmpf set mod(tmpw);
+                    tmpw set equal(tmpf 0);
+                    if tmpw first larger 0 then
+                        dir set 0;
+                    else
+                        dir set -1;
+
+                    curpath[tail][0] set i;
+                    curpath[tail][1] set j;
+                    curpath[tail][2] set 0;
+                    tail set tail add 1;
+                    cf set moveandmark(i j dir memory);
+                end
+            else
+                begin
+                    tmps set equal(dir 1);
+                    if tmps first larger 0 then
+                        begin
+                            curpath[tail][0] set i;
+                            curpath[tail][1] set j;
+                            curpath[tail][2] set 1;
+                            tail set tail add 1;
+                            cf set moveandmark(i j dir memory);
+                        end
+                    else
+                        begin
+                            curpath[tail][0] set i;
+                            curpath[tail][1] set j;
+                            curpath[tail][2] set 2;
+                            tail set tail add 1;
+                            cf set moveandmark(i j dir memory);
+                        end
+                end
+        end
+    else
+        begin
+            tmps set tail sub 1;
+            prev[0] set curpath[tmps][0];
+            prev[1] set curpath[tmps][1];
+            prev[2] set curpath[tmps][2];
+
+
+            int xt set 0;
+
+            xt set prev[2];
+            tmps set equal(xt 0);
+            if tmps first larger 0 then
+                prwl set 0;
+            else
+                begin
+                    xt set prev[2];
+                    tmps set equal(xt 1);
+                    if tmps first larger 0 then
+                        prwl set 2;
+                    else
+                        prwl set 1;
+                end
+
+            da set isdeadend(memory prwl i j);
+            dir set da[0];
+            ans set da[1];
+
+            tmps set equal(dir -1);
+            tmpw set equal(ans -1);
+            if tmps first larger 0 then
+                begin
+                    if tmpw first larger 0 then
+                        begin
+                            res[0] set -1;
+                            flag set 1;
+                        end
+                    else;
+                end
+            else;
+
+            tmps set equal(dir 10);
+            tmpw set equal(ans 10);
+            if tmps first larger 0 then
+                begin
+                    if tmpw first larger 0 then
+                        begin
+                            res[0] set 1;
+                            flag set 1;
+                        end
+                    else;
+                end
+            else;
+
+            tmps set equal(flag 0);
+            if tmps first larger 0 then
+                begin
+                    tmps set equal(ans 0);
+                    if tmps first larger 0 then
+                        begin
+                            tmps set equal(dir 0);
+                            if tmps first larger 0 then
+                                begin
+                                    tmpw set i add j;
+                                    tmpf set mod(tmpw);
+                                    tmpw set equal(tmpf 0);
+                                    if tmpw first larger 0 then
+                                        dir set 0;
+                                    else
+                                        dir set -1;
+
+                                    curpath[tail][0] set i;
+                                    curpath[tail][1] set j;
+                                    curpath[tail][2] set 0;
+                                    tail set tail add 1;
+                                    cf set moveandmark(i j dir memory);
+                                end
+                            else
+                                begin
+                                    tmps set equal(dir 1);
+                                    if tmps first larger 0 then
+                                        begin
+                                            curpath[tail][0] set i;
+                                            curpath[tail][1] set j;
+                                            curpath[tail][2] set 1;
+                                            tail set tail add 1;
+                                            cf set moveandmark(i j dir memory);
+                                        end
+                                    else
+                                        begin
+                                            curpath[tail][0] set i;
+                                            curpath[tail][1] set j;
+                                            curpath[tail][2] set 2;
+                                            tail set tail add 1;
+                                            cf set moveandmark(i j dir memory);
+                                        end
+                                end
+                        end
+                    else
+                        begin
+                            tmps set equal(tail 1);
+                            if tmps first smaller 0 then
+                                tail set tail sub 1;
+                            else;
+                            tmps set equal(dir 0);
+                            if tmps first larger 0 then
+                                begin
+                                    tmpw set i add j;
+                                    tmpf set mod(tmpw);
+                                    tmpw set equal(tmpf 0);
+                                    if tmpw first larger 0 then
+                                        dir set 0;
+                                    else
+                                        dir set -1;
+                                end
+                            else;
+                            cf set moveandmark(i j dir memory);
+                        end
+                end
+            else;
+        end
+
+    tmps set equal(flag 0);
+    if tmps first larger 0 then
+        res[0] set 0;
+    else;
+    res[1] set tail;
+end
+return res;
+
+function work()
+begin
+    vector of vector of vector of int memory set {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0}},{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0}},{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0}},{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0}},{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0}},{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0}},{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0},{0, 0, 0}}};
+    int tail set 0;
+    vector of vector of int curpath set {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0},{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+
+    int indi set 0;
+    int indj set 0;
+    int met set 0;
+
+    vector of int cord[2];
+    vector of int tmpee[2];
+    int tmpw set 1;
+    int desc set 0;
+
+    met set 1;
+    do
+        begin
+            met set 2;
+            cord set lms;
+            indi set cord[0];
+            indj set cord[1];
+            tmpee set step(indi indj tail curpath memory);
+            tail set tmpee[1];
+            desc set tmpee[0];
+            tmpw set equal(desc 0);
+        end
+    while tmpw first larger 0;
+end
+return desc;

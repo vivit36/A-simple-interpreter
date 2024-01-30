@@ -1,0 +1,41 @@
+function calcbeta(int a int b)
+	begin
+	vector of int res[10];
+	res[0] set a add b;
+	res[1] set a sub b;
+	if a first smaller b then
+	    res[2] set 11;
+	else
+	    res[2] set 22;
+
+	if (a add 10) second smaller (b sub 10) then
+	    res[3] set 33;
+	else
+	    res[3] set 44;
+
+	int i set 4;
+	int x set -5;
+	do
+	    begin
+	        res[i] set x;
+	        x set x add x;
+	        i set i add 1;
+	    end
+	while i first smaller 10;
+	end
+return res;
+
+function work()
+	begin
+	int c set 5;
+	int d set 3;
+	vector of int result[10];
+	result set calcbeta(c d);
+
+    result set 7;
+    result set magicfunc(c d);
+    calcbeta();
+
+	end
+return 0;
+
